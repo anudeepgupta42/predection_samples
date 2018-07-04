@@ -290,6 +290,15 @@ CV_cart.score(X_test, Y_test) #  0.8384043272481406
 
 
 ### grid search for Random forest model
+param_grid = {
+    'criterion' :['entropy','gini'],
+    'n_estimators': [100,120,140,150,200,250],
+    'max_features': ['auto', 'sqrt', 'log2'],
+    'oob_score': [False, True],
+    'max_depth':[5,8,12,15],
+    'min_samples_leaf':[5,8,12,15]
+    
+}
 rforest = RandomForestClassifier(n_jobs=-1,random_state=5151)
 CV_rforest = GridSearchCV(estimator=rforest, param_grid=param_grid, cv= 5)
 CV_rforest.fit(X_train,Y_train)
